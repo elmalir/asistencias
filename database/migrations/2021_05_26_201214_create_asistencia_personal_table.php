@@ -15,7 +15,8 @@ class CreateAsistenciaPersonalTable extends Migration
     {
         Schema::create('asistencia_personal', function (Blueprint $table) {
             $table->id();
-            $table->integer('persona_id');
+            $table->unsignedBigInteger('persona_id');
+            $table->foreign('persona_id')->references('id')->on('personas');
             $table->datetime('fecha_ingreso');
             $table->datetime('fecha_salida');
             $table->timestamps();

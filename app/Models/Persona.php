@@ -16,5 +16,10 @@ class Persona extends Model
         'edad',
         'email'
     ];
+    //Relación a tabla asistencia_personal
+    public function asistencias()
+    {
+        return $this->hasMany(AsistenciaPersonal::class);
+    }
 
 }
