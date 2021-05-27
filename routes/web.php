@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Habilidades;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Rutas para habilidades
+Route::get('/habilidades', [Habilidades::class, 'index'])->name('habilidades.index');
+Route::get('/habilidades/create', [Habilidades::class, 'create'])->name('habilidades.create');
+Route::post('/habilidades', [Habilidades::class, 'store'])->name('habilidades.store');
+Route::get('/habilidades/{habilidad}', [Habilidades::class, 'show'])->name('habilidades.show');
+Route::get('/habilidades/edit', [Habilidades::class, 'edit'])->name('habilidades.edit');
+Route::put('/habilidades/{habilidad}', [Habilidades::class, 'update'])->name('habilidades.update');
