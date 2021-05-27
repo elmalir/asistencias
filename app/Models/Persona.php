@@ -21,5 +21,9 @@ class Persona extends Model
     {
         return $this->hasMany(AsistenciaPersonal::class);
     }
+    public function habilidades()
+    {
+        return $this->hasMany(Habilidad::class);
+    }
 
 }
