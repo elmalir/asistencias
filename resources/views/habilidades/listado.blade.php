@@ -14,12 +14,21 @@
             <td>Nombre</td>
             <td>Porcetaje</td>
             <td>Orden</td>
+            <td>Acciones</td>
         </tr>
         @foreach ($habilidades as $h)
         <tr>
             <td>{{ $h->nombre }}</td>
             <td>{{ $h->porcentaje }}</td>
             <td>{{ $h->orden }}</td>
+            <td>
+            <a href="{{route('habilidades.edit', $h->id)}}">Editar</a>
+            <form action="{{ route('habilidades.destroy', $h->id) }}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit">Eliminar</button>
+            </form>
+            </td>
         </tr>
         @endforeach
     </table>

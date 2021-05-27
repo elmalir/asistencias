@@ -14,7 +14,10 @@ class Habilidades extends Controller
      */
     public function index()
     {
-        $habilidades = Habilidad::all();
+        //$habilidades = Habilidad::all();
+        $habilidades = Habilidad::orderBy('id', 'desc')->get();
+        //$habilidades = Habilidad::where('id', '<', '50')->get();
+        //$habilidades = Habilidad::select('nombre, orden')->get();
         return view('habilidades.listado', [
             'habilidades' => $habilidades
         ]);
@@ -53,7 +56,9 @@ class Habilidades extends Controller
      */
     public function show(Habilidad $habilidad)
     {
-        //
+        return view('habilidades.ver', [
+            'habilidad' => Habilidad::findOrFail($habilidad->id)
+        ]);
     }
 
     /**
@@ -64,7 +69,9 @@ class Habilidades extends Controller
      */
     public function edit(Habilidad $habilidad)
     {
-        return view('habilidades.edit');
+        return view('habilidades.editar', [
+            'habilidad' => $habilidad
+        ]);
     }
 
     /**
@@ -76,7 +83,10 @@ class Habilidades extends Controller
      */
     public function update(Request $request, Habilidad $habilidad)
     {
-        //
+        //dd($request->all());
+        $habilidad->fill($request->all());
+        $habilidad->save();
+        return redirect()->route('habilidades.index');
     }
 
     /**
@@ -87,6 +97,7 @@ class Habilidades extends Controller
      */
     public function destroy(Habilidad $habilidad)
     {
-        //
+        $habilidad->delete();
+        return redirect()->route('habilidades.index');
     }
 }

@@ -7,29 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Crear nuevo</h1>
-    <form action="{{ route('habilidades.store') }}" method="post">
+    <h1>Ver la Habilidad</h1>
+    <form action="{{ route('habilidades.update', $habilidad->id) }}" method="post">
     @csrf
+    <input type="hidden" name="_method" value="put">
     <div>
         <label for="nombre">Persona *</label>
-        <input type="text" name="persona_id" required>
+        <input type="text" name="persona_id" value="{{ $habilidad->persona_id }}" required>
 
     </div>
     <div>
         <label for="nombre">Nombre *</label>
-        <input type="text" name="nombre" required>
+        <input type="text" name="nombre" value="{{ $habilidad->nombre }}" required>
     </div>
     <div>
         <label for="nombre">Porcentaje *</label>
-        <input type="number" name="porcentaje" required>
+        <input type="number" name="porcentaje" value="{{ $habilidad->porcentaje }}" required>
     </div>
     <div>
     <label for="nombre">Orden *</label>
-        <input type="text" name="orden" required>
-    </div>
-    <div>
-        <button type="submit">Guardar</button>
-        <a href="{{ route('habilidades.index') }}">Cancelar</a>
+        <input type="text" name="orden" value="{{ $habilidad->orden }}" required>
     </div>
     </form>
 </body>

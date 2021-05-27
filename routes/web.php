@@ -23,5 +23,6 @@ Route::get('/habilidades', [Habilidades::class, 'index'])->name('habilidades.ind
 Route::get('/habilidades/create', [Habilidades::class, 'create'])->name('habilidades.create');
 Route::post('/habilidades', [Habilidades::class, 'store'])->name('habilidades.store');
 Route::get('/habilidades/{habilidad}', [Habilidades::class, 'show'])->name('habilidades.show');
-Route::get('/habilidades/edit', [Habilidades::class, 'edit'])->name('habilidades.edit');
+Route::get('/habilidades/{habilidad}/edit', [Habilidades::class, 'edit'])->name('habilidades.edit');
 Route::put('/habilidades/{habilidad}', [Habilidades::class, 'update'])->name('habilidades.update');
+Route::delete('/habilidades/{habilidad}', [Habilidades::class, 'destroy'])->name('habilidades.destroy');

@@ -14,7 +14,7 @@ class Personas extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
