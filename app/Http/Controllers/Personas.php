@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PersonaStoreRequest;
 use App\Models\Persona;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,11 @@ class Personas extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    //Reemplazo el request generico por el creado para validad
+    //public function store(Request $request)
+    public function store(PersonaStoreRequest $request)
     {
-        //
+        $persona = Persona::create($request->all());
     }
 
     /**
